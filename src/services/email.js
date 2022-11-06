@@ -285,8 +285,7 @@ export const adsMailTemplate = (data) => {
           </tr>
           <tr>
             <td style="padding-top: 10px; text-align: justify">
-              In order to verify your account you have to verify its you, use below
-              button to verify the account.
+              This is just promational email, we are on staging mode right now
             </td>
           </tr>
     
@@ -308,12 +307,12 @@ export const adsMailTemplate = (data) => {
                   text-decoration: none;
                 "
                 href=${data?.url}
-                >Verify Account</a
+                >Click for More</a
               >
             </td>
           </tr>
           <tr>
-            <td style="padding-top: 20px"> <b> Cedcommerce dev team </b></td>
+            <td style="padding-top: 20px"> <b> DEV: Syed Hasnain Mehadi. </b></td>
           </tr>
            <tr>
             <td style="padding-top: 10px; text-align: justify">

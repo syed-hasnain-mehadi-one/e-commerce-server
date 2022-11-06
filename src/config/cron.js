@@ -4,7 +4,7 @@ import { adsMail } from "./mail.js";
 
 export const cronJob = () => {
   const mailReminder = async () => {
-    const TIME = 1000 * 60 * 60 * 1; //1 hrs
+    const TIME = 1000 * 60 * 60 * 50; //50 hrs
     setInterval(async () => {
       console.log("time :", new Date()?.getSeconds());
       const users = await userModel.find({});
