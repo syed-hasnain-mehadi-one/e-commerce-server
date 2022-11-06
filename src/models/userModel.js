@@ -33,6 +33,10 @@ const userSchema = new Schema(
       required: [true, "password should not be null"],
       select: false,
     },
+    profile: {
+      type: String,
+      default: "/images/man.png",
+    },
     isActive: {
       type: Boolean,
       default: false,
