@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import userModel from "../models/userModel.js";
 import { adsMail } from "./mail.js";
+
 export const cronJob = () => {
   const mailReminder = async () => {
     const TIME = 1000 * 60 * 60 * 1; //1 hrs
@@ -19,16 +20,15 @@ export const cronJob = () => {
   };
 
   const otpReset = async () => {
-    const TIME = 1000 * 60 * 10; //10 min
+    const TIME = 1000 * 60 * 5; //5 min
     setInterval(async () => {
-      console.log('time', new Date())
-      const users = await userModel.updateMany(
+      await userModel.updateMany(
         {
-          createdAt: { $lte: new Date(new Date().getTime() - 2 * 60000) },
+          createdAt: { $lte: new Date(new Date().getTime() - 8 * 60000) },
         },
         { $unset: { otp: 1 } }
       );
-      console.log("users", users);
+      console.log(chalk.bgCyanBright.bold("OTP RESET JOB: ", new Date()));
     }, TIME);
   };
 
@@ -40,5 +40,4 @@ export const cronJob = () => {
   } catch (error) {
     console.log(chalk.bgRed.bold(error));
   }
-  
 };

@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
-import { adsMailTemplate, signUp } from "../services/email.js";
+import { adsMailTemplate, signOtp, signUpLink } from "../services/email.js";
 dotenv.config();
 
 let transporter = nodemailer.createTransport({
@@ -23,7 +23,7 @@ export const registrationMail = async (data) => {
       to: data?.email,
       subject: "Account Confirmation Mail",
       text: "Account Confirmation Mail",
-      html: signUp(data),
+      html: data?.platform === "web" ? signUpLink(data) : signOtp(data),
     });
     console.log(chalk.bgYellowBright.bold("sent email id:", info.messageId));
   } catch (error) {
